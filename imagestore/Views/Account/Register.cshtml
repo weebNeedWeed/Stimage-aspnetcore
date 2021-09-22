@@ -1,0 +1,40 @@
+﻿@model imagestore.ViewModels.RegisterViewModel
+@{
+    ViewData["title"] = "Register Page";
+}
+
+<div class="register-wrapper text-center">
+    <div class="register-circle ml-auto mr-auto text-center">
+        <i class="far fa-user register-icon"></i>
+    </div>
+    <h2 class="register-title">Register</h2>
+
+    <div asp-validation-summary="ModelOnly" class="text-danger register-validation-all"></div>
+
+    <form style="margin-top: 40px" asp-action="Register" method="POST">
+        <div class="form-group">
+            <input class="form-control form-control-lg" placeholder="Username" asp-for="UserName">
+            <span asp-validation-for="UserName" class="text-left form-text text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input class="form-control form-control-lg" placeholder="Email" asp-for="Email">
+            <span asp-validation-for="Email" class="text-left form-text text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input class="form-control form-control-lg" placeholder="Password" asp-for="Password">
+            <span asp-validation-for="Password" class="text-left form-text text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input class="form-control form-control-lg" placeholder="Confirm Password" asp-for="ConfirmPassword">
+            <span asp-validation-for="ConfirmPassword" class="text-left form-text text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg w-100 mt-3">Register</button>
+        <p class="register-text">Already have an account ?</p>
+        <a asp-action="Login">Login now!</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

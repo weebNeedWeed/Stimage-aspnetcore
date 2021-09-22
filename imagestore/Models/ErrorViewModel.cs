@@ -1,5 +1,3 @@
-using System;
-
 namespace imagestore.Models
 {
     public class ErrorViewModel

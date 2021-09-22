@@ -3,25 +3,144 @@
 }
 
 /*nav bar*/
-.navbar-brand{
+.navbar-brand {
     display: flex;
-    justify-content:center;
+    justify-content: center;
 }
 
 .brand-text {
     font-size: 25px;
     font-weight: 700;
-    padding-top:10px;
-    letter-spacing:3px;
+    padding-top: 10px;
+    letter-spacing: 3px;
     text-decoration: overline;
 }
 
-.brand-logo{
+.brand-logo {
     border-bottom: 2px solid black;
 }
 
-.nav-link{
-    text-transform:uppercase;
-    font-size:14px;
-    font-weight:700;
+.nav-link {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center
+}
+
+.nav-item-login {
+    border: 1px solid rgba(0,0,0,0.5);
+    border-radius: 20px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    background-color: white;
+    transition: 0.2s;
+}
+
+.nav-item-login:hover {
+    border: 1px solid rgba(0,0,0,0.9);
+}
+
+
+/* register page */
+.register-wrapper {
+    width: 430px;
+    background-color: #fff;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    border: 1px solid rgba(0,0,0,0.3);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 3px;
+    padding: 30px;
+    padding-bottom: 35px;
+}
+
+.register-circle {
+    width: 80px;
+    height: 80px;
+    background-color: #1089ff;
+    border-radius: 50%;
+}
+
+.register-icon {
+    font-size: 30px;
+    margin-top: 25px;
+    color: #fff;
+}
+
+.register-title {
+    font-size: 28px;
+    color: black;
+    font-weight: 300;
+    margin-top: 18px;
+    letter-spacing: 2px;
+}
+
+.register-text {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    display: inline;
+}
+
+.register-validation-all ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* login page */
+.login-wrapper {
+    width: 430px;
+    background-color: #fff;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    border: 1px solid rgba(0,0,0,0.3);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 3px;
+    padding: 30px;
+    padding-bottom: 35px;
+}
+
+.login-circle {
+    width: 80px;
+    height: 80px;
+    background-color: #1089ff;
+    border-radius: 50%;
+}
+
+.login-icon {
+    font-size: 30px;
+    margin-top: 25px;
+    color: #fff;
+}
+
+.login-title {
+    font-size: 28px;
+    color: black;
+    font-weight: 300;
+    margin-top: 18px;
+    letter-spacing: 2px;
+}
+
+.login-text {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    display: inline;
+}
+
+.login-validation-all ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Responsive web */
+@media only screen and (max-width: 990px) {
+    .nav-item {
+        margin-right: 0 !important;
+    }
 }
