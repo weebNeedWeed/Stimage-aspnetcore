@@ -11,7 +11,7 @@
 
     <div asp-validation-summary="ModelOnly" class="text-danger login-validation-all"></div>
 
-    <form style="margin-top: 40px" asp-action="Login" method="POST">
+    <form style="margin-top: 40px" asp-action="Login" method="POST" asp-route-ReturnUrl="@ViewData["ReturnUrl"]">
         <div class="form-group">
             <input class="form-control form-control-lg" placeholder="Email" asp-for="Email">
             <span asp-validation-for="Email" class="text-left form-text text-danger"></span>

@@ -1,0 +1,121 @@
+﻿@model imagestore.ViewModels.UploadImageViewModel
+@{
+    ViewData["title"] = "Upload site";
+}
+
+<h1 class="title">upload image</h1>
+<form method="post" asp-action="Upload" asp-controller="Image" class="mt-5" enctype="multipart/form-data">
+    <h4 class="subtitle">1. Select image</h4>
+    <ul class="step">
+        <li>
+            <div class="input-group mb-3">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="inputFile" name="ImageData">
+                    <label class="custom-file-label" for="inputFile" id="inputFileLabel">Choose image</label>
+                </div>
+            </div>
+        </li>
+        <li>
+            <h6>Preview image: <a id="clearBtn">click to clear</a></h6>
+
+            <div id="imageWrapper">
+                <img id="uploadImg" class="img-fluid" alt="Upload Stimage Image">
+            </div>
+        </li>
+    </ul>
+
+    <h4 class="subtitle mt-5">2. Information</h4>
+    <div class="upload-validate text-danger" asp-validation-summary="ModelOnly"></div>
+
+    @if (ViewBag.Message != null)
+    {
+        <div class="upload-validate text-success">
+            <ul>
+                <li>@ViewBag.Message</li>
+            </ul>
+        </div>
+    }
+
+    <ul class="step">
+        <li>
+            <div class="form-group">
+                <label class="upload-title" asp-for="Title">Image title:</label>
+                <input type="text" class="form-control" placeholder="Ex: My Image" asp-for="Title">
+                <span class="form-text text-danger" asp-validation-for="Title"></span>
+            </div>
+        </li>
+
+        <li>
+            <div class="form-group">
+                <label class="upload-title" asp-for="Slug">Image slug:</label>
+                <input type="text" id="slug" class="form-control" placeholder="Ex: my-image-3000" asp-for="Slug">
+                <span class="form-text text-danger" asp-validation-for="Slug"></span>
+            </div>
+        </li>
+
+        <li>
+            <div class="form-group">
+                <label class="upload-title" asp-for="Description">Image description:</label>
+                <input type="text" asp-for="Description" class="form-control" placeholder="Ex: I like this image most! OmegaLuL">
+                <span class="form-text text-danger" asp-validation-for="Description"></span>
+            </div>
+        </li>
+
+        <li>
+            <div class="form-check">
+                <input class="form-check-input public-upload" type="checkbox" asp-for="IsPublic">
+                <label class="form-check-label" asp-for="IsPublic">
+                    Public
+                </label>
+            </div>
+        </li>
+    </ul>
+
+    <div class="btn-group d-flex mt-lg-5" role="group">
+        <button type="button" onclick="location.href='/image/upload'" class="btn btn-outline-danger">Clear</button>
+        <button class="btn" type="button">Or</button>
+        <button type="submit" class="btn btn-outline-dark">Upload</button>
+    </div>
+
+</form>
+
+@section Scripts {
+    <script>
+        function makeid(length) {
+            var result = '';
+            var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            var charactersLength = characters.length;
+            for (var i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() *
+                    charactersLength));
+            }
+            return result;
+        }
+
+        $(document).ready(function () {
+            $("#slug").val(makeid(15));
+            const imageHtml = $("#uploadImg");
+            const defaultText = "Please select image to preview";
+
+            $("#imageWrapper").text(defaultText);
+
+            $("#clearBtn").on("click", function () {
+                $("#inputFile").val(null);
+                $("#inputFileLabel").text("Choose image");
+                $("#uploadImg").attr("src", "");
+                $("#imageWrapper").text(defaultText);
+            });
+
+            $("#inputFile").on("change", function () {
+                $("#imageWrapper").html(imageHtml);
+                const image = this.files[0];
+                const url = URL.createObjectURL(image);
+
+                $("#inputFileLabel").text(image.name);
+
+                $("#uploadImg").attr("src", url);
+            });
+        });
+    </script>
+    <partial name="_ValidationScriptsPartial" />
+}

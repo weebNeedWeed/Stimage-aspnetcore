@@ -138,6 +138,57 @@
 }
 
 
+/* Upload image page */
+.title{
+    text-align: center;
+    text-decoration: underline;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.subtitle{
+    font-weight: 500;
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    text-align: left;
+    border-bottom : 1px solid black;
+}
+
+.step {
+    list-style-type: square;
+}
+
+
+#clearBtn {
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#imageWrapper {
+    text-align: center
+}
+
+.upload-title{
+    margin: 0;
+    font-size: 18px;
+}
+
+.public-upload{
+    transform: scale(1.5);
+}
+
+.upload-validate li {
+    list-style-type: square;
+    padding: 0;
+    text-align: left;
+    text-decoration: underline
+}
+
+
+
 /* Responsive web */
 @media only screen and (max-width: 990px) {
     .nav-item {

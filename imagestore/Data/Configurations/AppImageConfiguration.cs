@@ -20,9 +20,9 @@ namespace imagestore.Data.Configurations
 
             builder.Property(o => o.CreatedAt).IsRequired().HasDefaultValue<DateTime>(DateTime.Now);
 
-            builder.Property(o => o.Slug).HasDefaultValue<string>(Guid.NewGuid().ToString());
+            builder.Property(o => o.IsPublic).HasDefaultValue<bool?>(true);
 
-            builder.Property(o => o.IsPublic).HasDefaultValue<bool>(true);
+            builder.HasIndex(o => o.Slug).IsUnique();
         }     
     }
 }

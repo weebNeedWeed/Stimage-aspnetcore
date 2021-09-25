@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace imagestore.Models
@@ -10,18 +9,18 @@ namespace imagestore.Models
         [DataType(DataType.DateTime)]
         [Required]
         public DateTime CreatedAt { get; set; }
-        [MaxLength(50)]
+        [MaxLength(200)]
         [Required]
         public string Title { get; set; }
-        [MaxLength(50)]
+        [MaxLength(200)]
         [Required]
         public string Slug { get; set; }
-        [MaxLength(100)]
+        [MaxLength(300)]
         public string Description { get; set; }
         [Required]
         public byte[] ImageData { get; set; }
         [Required]
-        public bool IsPublic { get; set; }
+        public bool? IsPublic { get; set; }
         public string AppUserId { get; set; }
         public AppUser AppUser { get; set; }
     }

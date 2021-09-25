@@ -66,14 +66,19 @@ namespace imagestore.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult Login()
+        public IActionResult Login(string ReturnUrl)
         {
+            if (ReturnUrl != null)
+            {
+                ViewData["ReturnUrl"] = ReturnUrl;
+            }
+            
             return View();
         }
 
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        public async Task<IActionResult> Login([FromForm]LoginViewModel loginViewModel)
+        public async Task<IActionResult> Login([FromForm]LoginViewModel loginViewModel, string ReturnUrl)
         {
             if (!ModelState.IsValid)
             {
@@ -94,6 +99,11 @@ namespace imagestore.Controllers
             {
                 ModelState.AddModelError("", "Invalid Credentials");
                 return View(loginViewModel);
+            }
+
+            if(ReturnUrl != null)
+            {
+                return Redirect(ReturnUrl);
             }
 
             return RedirectToAction("Index", "Home");
