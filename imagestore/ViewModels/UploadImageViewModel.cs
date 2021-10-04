@@ -16,6 +16,6 @@ namespace imagestore.ViewModels
         [Required]
         public IFormFile ImageData { get; set; }
         [Required]
-        public bool IsPublic { get; set; }
+        public bool IsPublic { get; set; } = true;
     }
 }

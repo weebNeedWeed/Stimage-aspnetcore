@@ -1,0 +1,80 @@
+﻿
+<h1 class="title mb-5">user manager</h1>
+<p class="text-danger">*You can change your informations here!</p>
+<div id="accordion">
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    + Change my username
+                </button>
+            </h5>
+        </div>
+
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+                <p class="mt-auto mb-auto">Username:</p>
+                <form class="manager-form">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="username">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-primary" type="submit">
+                                <i class="fas fa-save"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    + Security
+                </button>
+            </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body">
+                <form class="manager-form">
+                    <div class="form-group">
+                        <label>Old password</label>
+                        <input class="form-control" placeholder="Enter old password">
+                        <span class="form-text text-danger">We'll never share your email with anyone else.</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>New password</label>
+                        <input class="form-control" placeholder="Enter new password">
+                        <span class="form-text text-danger">We'll never share your email with anyone else.</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Confimr new password</label>
+                        <input class="form-control" placeholder="Confirm new password">
+                        <span class="form-text text-danger">We'll never share your email with anyone else.</span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    + My Image
+                </button>
+            </h5>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+            <div class="card-body">
+                <a href="#">Go to image manager</a>
+            </div>
+        </div>
+    </div>
+</div>
