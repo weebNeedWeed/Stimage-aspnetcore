@@ -1,6 +1,11 @@
 ﻿
 <h1 class="title mb-5">user manager</h1>
-<p class="text-danger">*You can change your informations here!</p>
+
+<div class="d-flex justify-content-between">
+    <p class="text-danger mt-auto mb-auto">*You can change your informations here!</p>
+    <p class="mt-auto mb-auto">or <a asp-action="Logout" asp-controller="Manage" style="font-size: 24px; font-weight: bold;">logout</a></p>
+</div>
+
 <div id="accordion">
     <div class="card">
         <div class="card-header" id="headingOne">
@@ -73,7 +78,7 @@
         </div>
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
             <div class="card-body">
-                <a href="#">Go to image manager</a>
+                <a asp-action="Manager" asp-controller="Image">Go to image manager</a>
             </div>
         </div>
     </div>

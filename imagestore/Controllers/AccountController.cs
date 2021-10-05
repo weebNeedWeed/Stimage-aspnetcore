@@ -22,6 +22,11 @@ namespace imagestore.Controllers
         [AllowAnonymous]
         public IActionResult Register()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Manage");
+            }
+
             return View();
         }
 
@@ -72,7 +77,12 @@ namespace imagestore.Controllers
             {
                 ViewData["ReturnUrl"] = ReturnUrl;
             }
-            
+
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Manage");
+            }
+
             return View();
         }
 
