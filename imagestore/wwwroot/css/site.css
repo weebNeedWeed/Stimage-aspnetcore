@@ -186,7 +186,11 @@
     list-style-type: square;
     padding: 0;
     text-align: left;
-    text-decoration: underline
+    text-decoration: underline;
+    cursor: pointer;
+    word-wrap: break-word;
+    white-space: -moz-pre-wrap;
+    white-space: pre-wrap;
 }
 
 /* User manager page */
@@ -315,3 +319,4 @@
         flex-basis: 80%;
     }
 }
+

@@ -70,7 +70,7 @@ namespace imagestore.Controllers
                 }
             }
 
-            ViewBag.Message = $"Success. Your image url is https://{Request.Host}/Image/Show/{slug}";
+            ViewBag.Message = $"https://{Request.Host}/Image/Show/{slug}";
             return View();
         }
 

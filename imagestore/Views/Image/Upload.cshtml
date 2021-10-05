@@ -25,7 +25,7 @@
     </ul>
 
     <h4 class="subtitle mt-5">2. Information</h4>
-    <div class="upload-validate text-danger" asp-validation-summary="ModelOnly"></div>
+    <div id="url-copy" class="upload-validate text-danger" asp-validation-summary="ModelOnly"></div>
 
     @if (ViewBag.Message != null)
     {
@@ -115,6 +115,24 @@
 
                 $("#uploadImg").attr("src", url);
             });
+
+            const copy = $(".upload-validate.text-success li").first();
+
+            rxjs.fromEvent(copy, "click")
+                .pipe(
+                    rxjs.operators.throttleTime(2500)
+                )
+                .subscribe(function () {
+                    var url = copy.text();
+                    console.log(url);
+
+                    navigator.clipboard.writeText(url);
+                    copy.text("Copied!");
+
+                    setTimeout(() => {
+                        copy.text(url);
+                    }, 2000);
+                });
         });
     </script>
     <partial name="_ValidationScriptsPartial" />
