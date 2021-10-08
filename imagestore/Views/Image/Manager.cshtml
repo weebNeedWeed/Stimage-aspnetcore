@@ -12,6 +12,7 @@
     @foreach (AppImage image in Model)
     {
         <div class="imagem-item bg-image" style="background-image: url('data:image/png;base64,@Convert.ToBase64String(image.ImageData)')">
+            <p class="imagem-title">@image.Title</p>
             <div class="imagem-action">
                 <button type="button" class="btn btn-light btn-action">Info</button>
                 <button type="button" @Html.Raw(!(bool)(image.IsPublic) ? "disabled" : "")  class="btn btn-light btn-action" onclick="copyToClipboard('https://@ViewBag.Hostname/Image/Show/@image.Slug', @image.ImageId)" id="@image.ImageId">
