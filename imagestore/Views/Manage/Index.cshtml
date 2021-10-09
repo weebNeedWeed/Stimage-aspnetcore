@@ -1,30 +1,46 @@
-﻿@{ 
+﻿@model imagestore.ViewModels.ChangePasswordViewModel
+@{
     ViewData["title"] = User.Identity.Name + " - User Manager";
 }
 
 <h1 class="title mb-5">user manager</h1>
 
 <div class="d-flex justify-content-between">
-    <p class="text-danger mt-auto mb-auto">*You can change your informations here!</p>
-    <p class="mt-auto mb-auto">or <a asp-action="Logout" asp-controller="Manage" style="font-size: 24px; font-weight: bold;">logout</a></p>
+    @if (ViewBag.Message != null)
+    {
+        <p class="text-success mt-auto mb-auto">@ViewBag.Message</p>
+    }
+    else if (ViewBag.Error != null)
+    {
+        <p class="text-danger mt-auto mb-auto">@ViewBag.Error</p>
+    }
+    else
+    {
+        <p></p>
+    }
+
+    <p class="mt-auto mb-auto">or <a asp-action="Logout" asp-controller="Account" style="font-size: 24px; font-weight: bold;">logout</a></p>
 </div>
 
 <div id="accordion">
     <div class="card">
         <div class="card-header" id="headingOne">
             <h5 class="mb-0">
-                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    + Change my username
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    + My information
                 </button>
             </h5>
         </div>
 
         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
             <div class="card-body">
-                <p class="mt-auto mb-auto">Username:</p>
-                <form class="manager-form">
+                <p>Email: @ViewBag.Email</p>
+                <p>Username: @ViewBag.UserName</p>
+
+                <p class="mt-auto mb-auto">Change username:</p>
+                <form class="manager-form" asp-action="ChangeUsername" method="POST">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="username">
+                        <input type="text" name="newUsername" class="form-control" placeholder="username" value="@ViewBag.UserName">
                         <div class="input-group-append">
                             <button class="btn btn-outline-primary" type="submit">
                                 <i class="fas fa-save"></i>
@@ -32,6 +48,7 @@
                         </div>
                     </div>
                 </form>
+                <p class="form-text text-danger" style="font-size: 14px;">UserName length must less than 30 and greater than 8</p>
             </div>
         </div>
     </div>
@@ -39,30 +56,30 @@
     <div class="card">
         <div class="card-header" id="headingTwo">
             <h5 class="mb-0">
-                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     + Security
                 </button>
             </h5>
         </div>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
             <div class="card-body">
-                <form class="manager-form">
+                <form class="manager-form" asp-action="ChangePassword" method="post">
                     <div class="form-group">
-                        <label>Old password</label>
-                        <input class="form-control" placeholder="Enter old password">
-                        <span class="form-text text-danger">We'll never share your email with anyone else.</span>
+                        <label asp-for="OldPassword">Old password</label>
+                        <input class="form-control" placeholder="Enter old password" asp-for="OldPassword">
+                        <span class="form-text text-danger" asp-validation-for="OldPassword"></span>
                     </div>
 
                     <div class="form-group">
-                        <label>New password</label>
-                        <input class="form-control" placeholder="Enter new password">
-                        <span class="form-text text-danger">We'll never share your email with anyone else.</span>
+                        <label asp-for="NewPassword">New password</label>
+                        <input class="form-control" placeholder="Enter new password" asp-for="NewPassword">
+                        <span class="form-text text-danger" asp-validation-for="NewPassword"></span>
                     </div>
 
                     <div class="form-group">
-                        <label>Confimr new password</label>
-                        <input class="form-control" placeholder="Confirm new password">
-                        <span class="form-text text-danger">We'll never share your email with anyone else.</span>
+                        <label asp-for="ConfirmNewPassword">Confirm new password</label>
+                        <input class="form-control" placeholder="Confirm new password" asp-for="ConfirmNewPassword">
+                        <span class="form-text text-danger" asp-validation-for="ConfirmNewPassword"></span>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Save</button>
@@ -79,10 +96,14 @@
                 </button>
             </h5>
         </div>
-        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+        <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordion">
             <div class="card-body">
                 <a asp-action="Manager" asp-controller="Image">Go to image manager</a>
             </div>
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

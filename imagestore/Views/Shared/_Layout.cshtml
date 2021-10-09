@@ -49,7 +49,26 @@
         </main>
     </div>
 
-    <footer>Here's footer</footer>
+    <footer class="container d-flex justify-content-between footer">
+        <div class="footer-img-wrapper">
+            <img src="~/images/logo.svg" alt="Stimage logo" class="footer-image"/>
+            <p class="footer-copyright">&copy; 2021</p>
+        </div>
+
+        <div class="footer-nav-wrapper d-flex justify-content-around">
+            <ul class="list-nav">
+                <li><a class="botnav-item" asp-action="Login" asp-controller="Account">Login</a></li>
+                <li><a class="botnav-item" asp-action="Register" asp-controller="Account">Register</a></li>
+                <li><a class="botnav-item" asp-action="Logout" asp-controller="Account">Logout</a></li>
+            </ul>
+
+            <ul class="list-nav">
+                <li><a class="botnav-item" asp-action="Index" asp-controller="Home">Home</a></li>
+                <li><a class="botnav-item" asp-action="Manager" asp-controller="Image">Images</a></li>
+                <li><a class="botnav-item" asp-action="Index" asp-controller="Manage">User</a></li>
+            </ul>
+        </div>
+    </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
