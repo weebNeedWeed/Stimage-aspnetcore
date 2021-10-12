@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace imagestore.Migrations
 {
-    public partial class Initial : Migration
+    public partial class InitStimage : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -73,12 +73,13 @@ namespace imagestore.Migrations
                 {
                     ImageId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2021, 9, 25, 20, 13, 50, 384, DateTimeKind.Local).AddTicks(7662)),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2021, 10, 12, 21, 26, 47, 937, DateTimeKind.Local).AddTicks(7063)),
                     Title = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Slug = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: true),
                     ImageData = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
                     IsPublic = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
+                    ContentType = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     AppUserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
@@ -180,12 +181,12 @@ namespace imagestore.Migrations
             migrationBuilder.InsertData(
                 table: "AppRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "c937740b-ab0c-4b34-92c5-9a733350bb7d", "513dc409-7eaa-4732-82e1-592bec3c5208", "admin", "ADMIN" });
+                values: new object[] { "64a0ec35-d03c-4c89-a2d1-3f4af2fb74d8", "6fa42e1d-1eba-41c9-9b89-408b5f544d42", "admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AppRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "d173e410-992d-425a-bbab-5e76d3b18ac3", "0701311e-e35d-4736-8c06-a9a4a19ad3e3", "default", "DEFAULT" });
+                values: new object[] { "0f7715ed-c412-4695-b27a-e48631c6642d", "c9a92eff-2642-4e4d-9edf-c86991fb60a9", "default", "DEFAULT" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AppImages_AppUserId",

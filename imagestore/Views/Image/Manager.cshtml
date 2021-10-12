@@ -11,10 +11,10 @@
     </div>
     @foreach (AppImage image in Model)
     {
-        <div class="imagem-item bg-image" style="background-image: url('data:image/png;base64,@Convert.ToBase64String(image.ImageData)')">
+        <div class="imagem-item bg-image" style="background-image: url('data:@image.ContentType;base64,@Convert.ToBase64String(image.ImageData)')">
             <p class="imagem-title">@image.Title</p>
             <div class="imagem-action">
-                <button type="button" class="btn btn-light btn-action">Info</button>
+                <button type="button" class="btn btn-light btn-action" onclick="goToInfo('@image.Slug')" >Info</button>
                 <button type="button" @Html.Raw(!(bool)(image.IsPublic) ? "disabled" : "")  class="btn btn-light btn-action" onclick="copyToClipboard('https://@ViewBag.Hostname/Image/Show/@image.Slug', @image.ImageId)" id="@image.ImageId">
                     @Html.Raw(((bool) image.IsPublic) ? "Copy link" : "Private")
                 </button>
@@ -34,6 +34,10 @@
             setTimeout(() => {
                 $("#" + imageId).text("Copy Link");
             }, 2000);
+        }
+
+        function goToInfo(slug) {
+            window.location = "/Image/Info/" + slug;
         }
 
         $("#addNew").click(() => {

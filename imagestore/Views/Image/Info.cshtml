@@ -1,0 +1,71 @@
+﻿@model imagestore.ViewModels.EditViewModel
+@{
+    ViewData["title"] = "Image info";
+}
+
+<h1 class="title mb-5">Image's Informations</h1>
+
+<div class="text-center">
+    <img src="@ViewBag.Base64ImageUrl" class="img-fluid" alt="Stimage - @ViewBag.OldData.Title">
+</div>
+
+<h4 class="subtitle mt-5">Edit</h4>
+<form asp-action="EditImage" method="post" asp-route-slug="@ViewBag.OldData.Slug">
+    @if (ViewBag.Message != null)
+    {
+        <p class="upload-validate text-success">@ViewBag.Message</p>
+    }
+    else if (ViewBag.Error != null)
+    {
+        <p class="upload-validate text-danger">@ViewBag.Error</p>
+    }
+    else
+    {
+        <p></p>
+    }
+
+    <ul class="step">
+        <li>
+            <div class="form-group">
+                <label class="upload-title" asp-for="Title">Image title:</label>
+                <input type="text" class="form-control" placeholder="Ex: My Image" asp-for="Title" value="@ViewBag.OldData.Title">
+                <span class="form-text text-danger" asp-validation-for="Title"></span>
+            </div>
+        </li>
+
+        <li>
+            <div class="form-group">
+                <label class="upload-title" asp-for="Description">Image description:</label>
+                <input type="text" asp-for="Description" class="form-control" placeholder="Ex: I like this image most! OmegaLuL" value="@ViewBag.OldData.Description">
+                <span class="form-text text-danger" asp-validation-for="Description"></span>
+            </div>
+        </li>
+
+        <li>
+            <div class="form-check">
+                @if ((bool)ViewBag.OldData.IsPublic)
+                {
+                    <input checked class="form-check-input public-upload" type="checkbox" asp-for="IsPublic" />
+                }
+                else
+                {
+                    <input class="form-check-input public-upload" type="checkbox" asp-for="IsPublic" />
+                }
+                <label class="form-check-label" asp-for="IsPublic">
+                    Public
+                </label>
+            </div>
+        </li>
+    </ul>
+
+    <div class="text-right">
+        <button type="button" class="btn btn-outline-danger" onclick="location.href = '/Image/Manager'; ">Back</button>
+        <button type="submit" class="btn btn-outline-primary">Save</button>
+    </div>
+
+</form>
+
+<h4 class="subtitle">Delete</h4>
+<div class="text-center">
+    <button type="button" class="btn btn-danger" onclick="location.href = '/Image/Delete/@ViewBag.OldData.Slug'">Delete</button>
+</div>

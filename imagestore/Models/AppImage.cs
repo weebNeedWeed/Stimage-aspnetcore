@@ -21,6 +21,9 @@ namespace imagestore.Models
         public byte[] ImageData { get; set; }
         [Required]
         public bool? IsPublic { get; set; }
+        [Required]
+        [MaxLength(100)]
+        public string ContentType { get; set; }
         public string AppUserId { get; set; }
         public AppUser AppUser { get; set; }
     }

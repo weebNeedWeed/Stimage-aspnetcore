@@ -10,8 +10,8 @@ using imagestore.Data;
 namespace imagestore.Migrations
 {
     [DbContext(typeof(StimageContext))]
-    [Migration("20210925131350_Initial")]
-    partial class Initial
+    [Migration("20211012142648_InitStimage")]
+    partial class InitStimage
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,15 +50,15 @@ namespace imagestore.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c937740b-ab0c-4b34-92c5-9a733350bb7d",
-                            ConcurrencyStamp = "513dc409-7eaa-4732-82e1-592bec3c5208",
+                            Id = "64a0ec35-d03c-4c89-a2d1-3f4af2fb74d8",
+                            ConcurrencyStamp = "6fa42e1d-1eba-41c9-9b89-408b5f544d42",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "d173e410-992d-425a-bbab-5e76d3b18ac3",
-                            ConcurrencyStamp = "0701311e-e35d-4736-8c06-a9a4a19ad3e3",
+                            Id = "0f7715ed-c412-4695-b27a-e48631c6642d",
+                            ConcurrencyStamp = "c9a92eff-2642-4e4d-9edf-c86991fb60a9",
                             Name = "default",
                             NormalizedName = "DEFAULT"
                         });
@@ -178,10 +178,15 @@ namespace imagestore.Migrations
                     b.Property<string>("AppUserId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("ContentType")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2021, 9, 25, 20, 13, 50, 384, DateTimeKind.Local).AddTicks(7662));
+                        .HasDefaultValue(new DateTime(2021, 10, 12, 21, 26, 47, 937, DateTimeKind.Local).AddTicks(7063));
 
                     b.Property<string>("Description")
                         .HasMaxLength(300)
